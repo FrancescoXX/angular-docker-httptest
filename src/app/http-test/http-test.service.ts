@@ -12,6 +12,8 @@ export class HttpTestService {
   versionURL = `${this.BASEURL}/dev/version`;
   authTokenURL = `${this.BASEURL}/auth/token`;
 
+  userServiceUrl = 'http://192.168.10.78:3000/users/register'
+
   constructor(private http: HttpClient) { }
 
   getTest = () => {
@@ -26,7 +28,15 @@ export class HttpTestService {
         catchError(this.handleError));
   }
 
+  usersRegister = (bodyrequest: any) => {
+    return this.http.post<any>('http://192.168.10.78:3000/users/register', bodyrequest)
+      .pipe(
+        catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
+    console.log("ERROR: ", error);
+    
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);
     } else {
@@ -34,6 +44,6 @@ export class HttpTestService {
         `Backend returned code ${error.status}, ` +
         `body was: ${error.error}`);
     }
-    return throwError('Something bad happened; please try again later.');
+    return throwError(error);
   }
 }

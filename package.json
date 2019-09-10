@@ -8,8 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dockerbuild":"docker build -t my-angular-app:v1 .",
-    "dockerrun":"docker run -p 80:80 my-angular-app:v1"
+    "dockerbuild": "docker build -t my-angular-app:v1 .",
+    "dockerrun": "docker run -p 80:80 my-angular-app:v1"
   },
   "private": true,
   "dependencies": {

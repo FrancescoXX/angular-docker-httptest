@@ -35,4 +35,22 @@ export class HttpTestComponent implements OnInit {
         console.log('authToken DATA', data);
       });
   }
+
+  usersRegister() {
+    const bodyrequest = {
+      firstname: 'admin',
+      lastname: 'admin',
+      email: 'francescociullaroma@gmail.com',
+      password: '123456'
+    };
+    console.log('bodyrequest: ', bodyrequest);
+    this.testService.usersRegister(bodyrequest)
+      .subscribe((data: any) => {
+        console.log('authToken DATA', data);
+      },
+        (error: any) => {
+          console.log('error!!!', error);
+        },
+      );
+  }
 }
